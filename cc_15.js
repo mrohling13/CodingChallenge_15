@@ -109,3 +109,29 @@ increaseRiskButton.addEventListener("click", function () {
     });
   });
   
+
+  // Task 6: Handling Event Propagation
+
+  function addRiskItem(riskName, riskLevel, department) {
+    const riskCard = document.createElement("div");
+    riskCard.className = "riskCard";
+
+    const cardContent = generateRiskCardContent(riskName, riskLevel, department);
+  riskCard.appendChild(cardContent);
+
+  if (riskLevel === "Low") {
+    riskCard.style.backgroundColor = "lightgreen";
+  } else if (riskLevel === "Medium") {
+    riskCard.style.backgroundColor = "lightyellow";
+  } else if (riskLevel === "High") {
+    riskCard.style.backgroundColor = "lightcoral";
+  }
+
+  riskDashboard.appendChild(riskCard);
+
+  const resolveButton = riskCard.querySelector(".resolveButton");
+  resolveButton.addEventListener("click", function (e) {
+    e.stopPropagation(); // Prevent event propagation
+    riskDashboard.removeChild(riskCard);
+  });
+}
