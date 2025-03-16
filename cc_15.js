@@ -84,11 +84,11 @@ function addRiskItem(riskName, riskLevel, department) {
 
 // Task 5: Implementing Bulk Updates
 
-const increaseRiskButton = document.createElement("button");
+const increaseRiskButton = document.createElement("button"); // creates a button that increases all risk levels
 increaseRiskButton.textContent = "Increase Risk Levels";
 document.body.insertBefore(increaseRiskButton, riskDashboard);
 
-increaseRiskButton.addEventListener("click", function () {
+increaseRiskButton.addEventListener("click", function () { // increases risk level
   const riskCards = document.querySelectorAll(".riskCard");
   riskCards.forEach((card) => {
     const riskLevelElement = card.querySelector("p:nth-child(2)");
@@ -98,7 +98,7 @@ increaseRiskButton.addEventListener("click", function () {
     } else if (riskLevel === "Medium") {
       riskLevel = "High";
     }
-    riskLevelElement.textContent = `Risk Level: ${riskLevel}`;
+    riskLevelElement.textContent = `Risk Level: ${riskLevel}`; // updates the background color on new risk level  
     if (riskLevel === "Low") {
         card.style.backgroundColor = "lightgreen";
       } else if (riskLevel === "Medium") {
@@ -120,22 +120,22 @@ increaseRiskButton.addEventListener("click", function () {
   riskCard.appendChild(cardContent);
 
   if (riskLevel === "Low") {
-    riskCard.style.backgroundColor = "lightgreen";
+    riskCard.style.backgroundColor = "lightgreen"; // sets background color depending on risk level
   } else if (riskLevel === "Medium") {
     riskCard.style.backgroundColor = "lightyellow";
   } else if (riskLevel === "High") {
     riskCard.style.backgroundColor = "lightcoral";
   }
 
-  riskDashboard.appendChild(riskCard);
+  riskDashboard.appendChild(riskCard); // adds risk card to dashboard
 
   const resolveButton = riskCard.querySelector(".resolveButton");
   resolveButton.addEventListener("click", function (e) {
-    e.stopPropagation(); // Prevent event propagation
-    riskDashboard.removeChild(riskCard);
+    e.stopPropagation(); // prevents click events
+    riskDashboard.removeChild(riskCard); // removes risk card
   });
 }
 
 addRiskItem("Data Breach", "High", "IT");
-addRiskItem("Supply Chain Disruption", "Medium", "Operations");
+addRiskItem("Supply Chain Disruption", "Medium", "Operations"); // adds initial risks items
 addRiskItem("HR Compliance Issue", "Low", "Human Resources");
