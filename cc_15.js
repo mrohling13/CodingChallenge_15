@@ -41,3 +41,20 @@ function createParagraph(label, value) {
     addRiskItem(riskName, riskLevel, department);
     this.reset(); // clears the form
   });
+
+  // Task 3: Removing Risk Items
+
+  function addRiskItem(riskName, riskLevel, department) { // adds risk items
+    const riskCard = document.createElement("div"); 
+    riskCard.className = "riskCard";
+
+    const cardContent = generateRiskCardContent(riskName, riskLevel, department); // creates and appends card content
+  riskCard.appendChild(cardContent);
+
+  riskDashboard.appendChild(riskCard);
+
+  const resolveButton = riskCard.querySelector(".resolveButton"); // adds event listener to the resolve button
+  resolveButton.addEventListener("click", function () {
+    riskDashboard.removeChild(riskCard);
+  });
+}
