@@ -58,3 +58,26 @@ function createParagraph(label, value) {
     riskDashboard.removeChild(riskCard);
   });
 }
+
+// Task 4: Categorizing Risks by Level
+
+function addRiskItem(riskName, riskLevel, department) {
+    const riskCard = document.createElement("div");
+    riskCard.className = "riskCard";
+
+    const cardContent = generateRiskCardContent(riskName, riskLevel, department); // establishing background color
+  riskCard.appendChild(cardContent);
+  if (riskLevel === "Low") {
+    riskCard.style.backgroundColor = "lightgreen"; // low risk
+  } else if (riskLevel === "Medium") {
+    riskCard.style.backgroundColor = "lightyellow"; // medium risk
+  } else if (riskLevel === "High") {
+    riskCard.style.backgroundColor = "lightcoral"; // high risk
+  }
+
+  riskDashboard.appendChild(riskCard);
+  const resolveButton = riskCard.querySelector(".resolveButton"); // resolve button
+  resolveButton.addEventListener("click", function () {
+    riskDashboard.removeChild(riskCard);
+  });
+}
