@@ -135,3 +135,7 @@ increaseRiskButton.addEventListener("click", function () {
     riskDashboard.removeChild(riskCard);
   });
 }
+
+addRiskItem("Data Breach", "High", "IT");
+addRiskItem("Supply Chain Disruption", "Medium", "Operations");
+addRiskItem("HR Compliance Issue", "Low", "Human Resources");
