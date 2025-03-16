@@ -81,3 +81,31 @@ function addRiskItem(riskName, riskLevel, department) {
     riskDashboard.removeChild(riskCard);
   });
 }
+
+// Task 5: Implementing Bulk Updates
+
+const increaseRiskButton = document.createElement("button");
+increaseRiskButton.textContent = "Increase Risk Levels";
+document.body.insertBefore(increaseRiskButton, riskDashboard);
+
+increaseRiskButton.addEventListener("click", function () {
+  const riskCards = document.querySelectorAll(".riskCard");
+  riskCards.forEach((card) => {
+    const riskLevelElement = card.querySelector("p:nth-child(2)");
+    let riskLevel = riskLevelElement.textContent.split(": ")[1];
+    if (riskLevel === "Low") {
+      riskLevel = "Medium";
+    } else if (riskLevel === "Medium") {
+      riskLevel = "High";
+    }
+    riskLevelElement.textContent = `Risk Level: ${riskLevel}`;
+    if (riskLevel === "Low") {
+        card.style.backgroundColor = "lightgreen";
+      } else if (riskLevel === "Medium") {
+        card.style.backgroundColor = "lightyellow";
+      } else if (riskLevel === "High") {
+        card.style.backgroundColor = "lightcoral";
+      }
+    });
+  });
+  
